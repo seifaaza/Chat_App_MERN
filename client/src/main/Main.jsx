@@ -1,10 +1,10 @@
-import Navbar from "./navbar/Navbar";
+import NavMenu from "./navMenu/NavMenu";
 import AppRoutes from "../routes/AppRoutes";
 
 const Main = () => {
   return (
     <div className="h-screen w-screen overflow-hidden flex">
-      <Navbar />
+      <NavMenu />
       <AppRoutes />
     </div>
   );

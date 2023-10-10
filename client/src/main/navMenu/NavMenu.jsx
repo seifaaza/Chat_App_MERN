@@ -3,7 +3,7 @@ import NavItem from "./NavItem";
 import SettingsIcon from "@mui/icons-material/Settings";
 import Avatar from "@mui/material/Avatar";
 
-const Navbar = () => {
+const NavMenu = () => {
   return (
     <ul className="flex flex-col justify-between bg-main px-4 py-8 h-full text-white">
       <ul className="flex flex-col justify-center items-center gap-8">
@@ -34,4 +34,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavMenu;

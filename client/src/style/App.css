@@ -56,8 +56,41 @@ body {
   font-family: var(--main-font) !important;
   font-weight: 400 !important;
   transition: 200ms !important;
+  box-shadow: none !important;
+  text-transform: capitalize !important;
 }
 .btn:hover{
   transform: translateY(-3px) !important;
   opacity: 85% !important;
+}
+
+.btn-outlined{
+  background-color: transparent !important;
+  border: var(--sec-color) 1px solid !important;
+  color: var(--sec-color) !important;
+  font-family: var(--main-font) !important;
+  font-weight: 400 !important;
+  transition: 200ms !important;
+  box-shadow: none !important;
+  text-transform: capitalize !important;
+}
+.btn-outlined:hover{
+  transform: translateY(-3px) !important;
+  background-color: var(--sec-color) !important;
+  color: var(--main-color) !important;
+}
+
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+  color: #ffffff88 !important;
+  font-family: var(--main-font) !important;
+}
+.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused,
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root,
+.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root,
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root,
+.css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root{
+  color: white !important;
+}
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border-color: #ffffff88 !important;
 }
