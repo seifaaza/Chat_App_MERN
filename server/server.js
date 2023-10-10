@@ -13,7 +13,4 @@ DbConnect()
 
 app.get('/', (req, res) => res.send('Welcome to my Express.js server!'))
 
-
-
-
 app.listen(process.env.PORT , _ => console.log(`App is running on port ${process.env.PORT}`))

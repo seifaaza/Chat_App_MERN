@@ -1,1 +1,63 @@
-h1{ color: aqua !important;}
+:root {
+  /* fonts family */
+  --main-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* Colors */
+  --main-color: #001C30 ;
+  --sec-color: #60f8ee ;
+  --light-color: #003053 ;
+  /* Media */
+  --mobile: "min-width: 320px";
+  --tablet: "min-width: 640px";
+  --laptop: "min-width: 1024px";
+  --desktop: "min-width: 1440px";
+}
+
+* {
+  margin: 0;
+  padding: 0%;
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+::selection{
+  background: var(--light-color);
+}
+
+/**************************** Responsive design ****************************/
+
+/* .main-container {
+  width: 100%;
+  margin: 0% auto;
+}
+
+@media (min-width: 768px) {
+  .main-container {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px) {
+  .main-container {
+    max-width: 924px;
+  }
+}
+@media (min-width: 1280px) {
+  .main-container {
+    max-width: 1224px;
+  }
+} */
+
+.btn{
+  background-color: var(--sec-color) !important;
+  color: var(--main-color) !important;
+  font-family: var(--main-font) !important;
+  font-weight: 400 !important;
+  transition: 200ms !important;
+}
+.btn:hover{
+  transform: translateY(-3px) !important;
+  opacity: 85% !important;
+}

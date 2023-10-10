@@ -7,25 +7,20 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        main: ['Poppins', 'sans-serif'],
-        title: ['Dela Gothic One', 'cursive']
+        main: ['Barlow', 'sans-serif'],
       },
       colors: {
-        'dark': '#0d111a',
+        'main': '#001C30',
+        'sec': '#60f8ee'
       },
     },
-    screens: {
-      mobile: "320px",
-      // => @media (min-width: 320px) { + 320px }
-      tablet: "640px",
-      // => @media (min-width: 640px) { + 640px }
-      laptop: "1024px",
-      // => @media (min-width: 1024px) { + 1024px }
-      desktop: "1440px",
-      // => @media (min-width: 1440px) { + 1440px }
-    },
+    // screens: {
+    //   mobile: "320px",
+    //   tablet: "640px",
+    //   laptop: "1024px",
+    //   desktop: "1440px",
+    // },
  
   },
   plugins: [],
 }
-
