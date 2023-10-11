@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Tooltip from "@mui/material/Tooltip";
 import Badge from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
 
 const NavItem = (props) => {
   return (

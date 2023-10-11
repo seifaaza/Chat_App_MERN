@@ -1,6 +1,9 @@
-import DiscussionItem from "./DiscussionItem";
+import FriendItem from "./FriendItem";
+import Popper from "@mui/material/Popper";
+import Fade from "@mui/material/Fade";
+import { useState } from "react";
 
-export default function DiscussionItems() {
+export default function FriendItems() {
   const people = [
     {
       username: "jaafar",
@@ -77,6 +80,16 @@ export default function DiscussionItems() {
   const usernameCapitalize = (username) =>
     username.charAt(0).toUpperCase() + username.slice(1);
 
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [placement, setPlacement] = useState();
+
+  const handleClick = (newPlacement) => (event) => {
+    setAnchorEl(event.currentTarget);
+    setOpen((prev) => placement !== newPlacement || !prev);
+    setPlacement(newPlacement);
+  };
+
   return (
     <ul
       role="list"
@@ -84,16 +97,24 @@ export default function DiscussionItems() {
     >
       {people.map((person, index) => (
         <>
-          <DiscussionItem
+          <FriendItem
             key={index}
             imageUrl={person.imageUrl}
             username={usernameCapitalize(person.username)}
             message={person.message}
             lastMessageTime={person.lastMessageTime}
+            iconClick={handleClick("bottom-end")}
           />
           <hr className="line" />
         </>
       ))}
+      <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
+        {({ TransitionProps }) => (
+          <Fade {...TransitionProps} timeout={350}>
+            <p>Settings</p>
+          </Fade>
+        )}
+      </Popper>
     </ul>
   );
 }
