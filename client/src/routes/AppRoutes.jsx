@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Chat from "../main/chat/Chat";
+import AllChat from "../main/chat/AllChat";
 import Friends from "../main/friends/Friends";
 import Settings from "../main/settings/Settings";
 import Profile from "../main/profile/Profile";
@@ -7,7 +7,7 @@ import Profile from "../main/profile/Profile";
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/chats" element={<Chat />} />
+      <Route path="/chats" element={<AllChat />} />
       <Route path="/friends" element={<Friends />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/profile" element={<Profile />} />

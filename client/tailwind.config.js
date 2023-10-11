@@ -11,7 +11,9 @@ export default {
       },
       colors: {
         'main': '#001C30',
-        'sec': '#60f8ee'
+        'sec': '#60f8ee',
+        'mainLight' : '#003053',
+        'mainDark': '#00192b'
       },
     },
     // screens: {

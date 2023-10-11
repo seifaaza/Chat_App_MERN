@@ -5,7 +5,7 @@ import Avatar from "@mui/material/Avatar";
 
 const NavMenu = () => {
   return (
-    <ul className="flex flex-col justify-between bg-main px-4 py-8 h-full text-white">
+    <ul className="flex m-1 md:m-2 rounded-xl flex-col justify-between bg-mainLight px-4 py-8  text-white">
       <ul className="flex flex-col justify-center items-center gap-8">
         <img
           src="/chat_flow_logo_2.svg"

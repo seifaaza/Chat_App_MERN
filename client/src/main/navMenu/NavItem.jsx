@@ -30,7 +30,7 @@ const NavItem = (props) => {
 NavItem.propTypes = {
   url: PropTypes.string,
   title: PropTypes.string,
-  icon: PropTypes.string,
+  icon: PropTypes.object,
 };
 
 export default NavItem;
