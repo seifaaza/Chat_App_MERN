@@ -1,3 +1,4 @@
+import React from "react";
 import DiscussionItem from "./DiscussionItem";
 
 export default function DiscussionItems() {
@@ -80,19 +81,18 @@ export default function DiscussionItems() {
   return (
     <ul
       role="list"
-      className="pr-6 divide-y divide-gray-100 w-full md:max-w-xs overflow-x-hidden overflow-y-scroll"
+      className="pr-8 divide-y divide-gray-100 w-full md:max-w-xs overflow-x-hidden overflow-y-scroll"
     >
       {people.map((person, index) => (
-        <>
+        <React.Fragment key={index}>
           <DiscussionItem
-            key={index}
             imageUrl={person.imageUrl}
             username={usernameCapitalize(person.username)}
             message={person.message}
             lastMessageTime={person.lastMessageTime}
           />
           <hr className="line" />
-        </>
+        </React.Fragment>
       ))}
     </ul>
   );

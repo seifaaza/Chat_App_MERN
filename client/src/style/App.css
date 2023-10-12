@@ -1,6 +1,7 @@
 :root {
   /* fonts family */
-  --main-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --main-font: 'Barlow', 'sans-serif';
+  --sec-font: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* Colors */
   --main-color: #001C30 ;
   --main-color-light: #003053 ;
@@ -23,38 +24,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  font-family: var(--main-font) !important;
 }
 ::selection{
   background: var(--main-color-light);
 }
 
-/**************************** Responsive design ****************************/
-
-/* .main-container {
-  width: 100%;
-  margin: 0% auto;
-}
-
-@media (min-width: 768px) {
-  .main-container {
-    max-width: 768px;
-  }
-}
-@media (min-width: 1024px) {
-  .main-container {
-    max-width: 924px;
-  }
-}
-@media (min-width: 1280px) {
-  .main-container {
-    max-width: 1224px;
-  }
-} */
-
 .btn{
   background-color: var(--sec-color) !important;
   color: var(--main-color) !important;
-  font-family: var(--main-font) !important;
+  font-family: var(--sec-font) !important;
   font-weight: 400 !important;
   transition: 200ms !important;
   box-shadow: none !important;
@@ -69,7 +48,7 @@ body {
   background-color: transparent !important;
   border: var(--sec-color) 1px solid !important;
   color: var(--sec-color) !important;
-  font-family: var(--main-font) !important;
+  font-family: var(--sec-font) !important;
   font-weight: 400 !important;
   transition: 200ms !important;
   box-shadow: none !important;
@@ -100,8 +79,11 @@ body {
 .css-1ua80n0-MuiInputBase-input-MuiOutlinedInput-input {
   margin-left: 8px !important;
 }
-.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
-  border-color: #ffffff88 !important;
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+  border-color: #ffffff60 !important;
+}
+.search-input .css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+  border: none !important;
 }
 .divide-y > :not([hidden]) ~ :not([hidden]) {
   border-top-width: 0 !important;

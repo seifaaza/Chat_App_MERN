@@ -11,7 +11,7 @@ export default function Header() {
       <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
         Your Chat, Your Rules.
       </h1>
-      <p className="mb-5 text-xl font-light text-slate-300">
+      <p className="mb-5 text-xl font-main font-light text-slate-300">
         Stay connected with friends and loved ones, share moments, and make
         memories through seamless, secure, and fun chat experiences.
       </p>
