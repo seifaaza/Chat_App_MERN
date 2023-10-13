@@ -6,6 +6,7 @@
   --main-color: #001C30 ;
   --main-color-light: #003053 ;
   --main-color-dark: #00192b ;
+
   --sec-color: #60f8ee ;
   /* Media */
   --mobile: "min-width: 320px";
@@ -29,6 +30,9 @@ body {
 /* ::selection{
   background: var(--main-color-light);
 } */
+button, .btn{
+  border-radius: 50px !important;
+}
 
 .btn{
   background-color: var(--sec-color) !important;
@@ -109,3 +113,12 @@ body {
   background-color: white !important;
 }
 
+.banner{
+  background-color: #60f8ee;
+  z-index: 10;
+}
+.banner-btn{
+  background-color: var(--main-color-light) !important;
+  color: var(--sec-color) !important;
+  text-transform: capitalize !important;
+}

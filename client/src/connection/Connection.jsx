@@ -2,13 +2,15 @@ import SignUp from "./SignUp";
 import Login from "./Login";
 import mainStore from "../store/mainStore";
 import Navbar from "../navbar/Navbar";
+import Banner from "../home/Banner";
 
 export default function Connection() {
   const store = mainStore();
   return (
     <div className="relative overflow-hidden bg-main w-full h-screen">
+      <Banner />
       <Navbar />
-      <div className="pb-80 pt-16 sm:pb-40 sm:pt-20 lg:pb-48 lg:pt-24">
+      <div className="pb-80 pt-16 sm:pb-40 sm:pt-20 lg:pb-48 lg:pt-20">
         <div className="z-10 relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           {store.loginInterface ? <Login /> : <SignUp />}
           <div>

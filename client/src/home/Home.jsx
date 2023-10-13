@@ -1,14 +1,16 @@
 import mainStore from "../store/mainStore";
 import Header from "./Header";
 import Navbar from "../navbar/Navbar";
+import Banner from "./Banner";
 
 export default function Home() {
   const store = mainStore();
 
   return (
     <div className="relative overflow-hidden bg-main w-full h-screen">
+      <Banner />
       <Navbar />
-      <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
+      <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-32">
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <Header />
           <div>
