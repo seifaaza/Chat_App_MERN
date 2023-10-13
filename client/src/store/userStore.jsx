@@ -1,7 +1,8 @@
 import { create } from "zustand";
 
 const userStore = create((set) => ({
-  conversation: false,
+  emptyConversation: true,
+  emptyNotification: true,
 }));
 
 export default userStore;

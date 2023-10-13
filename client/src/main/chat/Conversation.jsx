@@ -3,8 +3,8 @@ import UserBar from "./UserBar";
 
 export default function Conversation() {
   const store = userStore();
-  const emtyConversation = (
-    <div className=" flex-grow flex flex-col gap-3 justify-center items-center">
+  const emptyConversation = (
+    <div className=" flex-grow flex flex-col gap-5 justify-center items-center">
       <img src="/images/message.svg" className="w-44 opacity-30" alt="" />
       <h1 className="text-2xl text-mainLight ">Nothing Here !</h1>
     </div>
@@ -17,7 +17,7 @@ export default function Conversation() {
         className="p-5 pt-10 pr-8 text-white bg-mainDark bg-cover bg-center rounded-b-lg flex-grow flex flex-col justify-center
       items-center overflow-y-scroll"
       >
-        {!store.conversation ? emtyConversation : store.conversation}
+        {store.emptyConversation ? emptyConversation : "conversation not empty"}
       </div>
     </>
   );

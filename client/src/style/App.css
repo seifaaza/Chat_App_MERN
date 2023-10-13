@@ -96,4 +96,16 @@ body {
   height: 1px;
   width: 100%;
 }
+.css-jcn4dz-MuiBadge-badge{
+  font-family: var(--main-font) !important;
+  font-weight: 900 !important;
+  color: var(--main-color) !important;
+  background-color: var(--sec-color) !important;
+}
+.nav-link-item:hover .css-jcn4dz-MuiBadge-badge{
+  background-color: white !important;
+}
+.nav-button-item:hover .css-jcn4dz-MuiBadge-badge{
+  background-color: white !important;
+}
 

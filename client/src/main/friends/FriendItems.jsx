@@ -91,10 +91,7 @@ export default function FriendItems() {
   };
 
   return (
-    <ul
-      role="list"
-      className="pr-6 divide-y divide-gray-100 w-full md:max-w-xs overflow-x-hidden overflow-y-scroll"
-    >
+    <ul role="list" className="w-full divide-y divide-gray-100">
       {people.map((person, index) => (
         <>
           <FriendItem

@@ -1,7 +1,18 @@
-import React from "react";
+import Friends from "./Friends";
+import AddFriend from "./AddFriend";
+import mainStore from "../../store/mainStore";
 
 const FriendsModal = () => {
-  return <div className="text-light">Friends Modal</div>;
+  const store = mainStore();
+  return (
+    <div style={{ height: "75vh" }} className=" overflow-scroll">
+      {store.addFriend ? (
+        <AddFriend click={store.switchAddFriend} />
+      ) : (
+        <Friends click={store.switchAddFriend} />
+      )}
+    </div>
+  );
 };
 
 export default FriendsModal;

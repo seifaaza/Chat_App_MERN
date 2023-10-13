@@ -4,7 +4,7 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import SettingsIcon from "@mui/icons-material/Settings";
 import Avatar from "@mui/material/Avatar";
 import FriendsModal from "../friends/FriendsModal";
-import NotificationModal from "../notifications/NotificationModal";
+import NotificationModal from "../notifications/NotificationsModal";
 
 export const NavData = [
   {

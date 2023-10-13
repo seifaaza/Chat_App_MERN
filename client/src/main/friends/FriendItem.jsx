@@ -17,7 +17,7 @@ export default function FriendItem(props) {
     <li
       key={props.key}
       className="flex justify-between gap-x-6 py-5 hover:brightness-150 duration-300
-       cursor-pointer w-72"
+       cursor-pointer "
     >
       <span className="flex items-center gap-5">
         <img
@@ -41,5 +41,5 @@ FriendItem.propTypes = {
   username: PropTypes.string,
   message: PropTypes.string,
   lastMessageTime: PropTypes.string,
-  iconClick: PropTypes.string,
+  iconClick: PropTypes.func,
 };

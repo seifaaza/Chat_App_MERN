@@ -8,7 +8,7 @@ const NavLinkItem = (props) => {
     <Tooltip title={props.title}>
       <Link
         to={`/home${props.url}`}
-        className="text-white hover:text-sec opacity-50 hover:opacity-100"
+        className="nav-link-item text-white hover:text-sec opacity-50 hover:opacity-100"
       >
         <Badge
           color="secondary"
