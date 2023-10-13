@@ -9,7 +9,7 @@ import NotificationModal from "../notifications/NotificationsModal";
 export const NavData = [
   {
     title: "Chats",
-    url: "/chats",
+    url: "/chat",
     icon: <ForumRoundedIcon />,
   },
   {

@@ -81,7 +81,7 @@ export default function DiscussionItems() {
   return (
     <ul
       role="list"
-      className="pr-8 divide-y divide-gray-100 w-full md:max-w-xs overflow-x-hidden overflow-y-scroll"
+      className=" divide-y divide-gray-100 w-full overflow-x-hidden"
     >
       {people.map((person, index) => (
         <React.Fragment key={index}>
