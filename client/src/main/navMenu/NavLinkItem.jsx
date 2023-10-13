@@ -2,18 +2,13 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Tooltip from "@mui/material/Tooltip";
 import Badge from "@mui/material/Badge";
-import IconButton from "@mui/material/IconButton";
 
-const NavItem = (props) => {
+const NavLinkItem = (props) => {
   return (
     <Tooltip title={props.title}>
       <Link
         to={`/home${props.url}`}
-        className={` ${
-          props.url
-            ? " text-white hover:text-sec opacity-50 hover:opacity-100"
-            : "cursor-default "
-        }`}
+        className="text-white hover:text-sec opacity-50 hover:opacity-100"
       >
         <Badge
           color="secondary"
@@ -28,10 +23,10 @@ const NavItem = (props) => {
   );
 };
 
-NavItem.propTypes = {
+NavLinkItem.propTypes = {
   url: PropTypes.string,
   title: PropTypes.string,
   icon: PropTypes.object,
 };
 
-export default NavItem;
+export default NavLinkItem;

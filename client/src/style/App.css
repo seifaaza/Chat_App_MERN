@@ -26,9 +26,9 @@ body {
   scroll-behavior: smooth;
   font-family: var(--main-font) !important;
 }
-::selection{
+/* ::selection{
   background: var(--main-color-light);
-}
+} */
 
 .btn{
   background-color: var(--sec-color) !important;
