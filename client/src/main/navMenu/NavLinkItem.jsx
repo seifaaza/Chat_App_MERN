@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Tooltip from "@mui/material/Tooltip";
 import Badge from "@mui/material/Badge";
+import Avatar from "@mui/material/Avatar";
+import secStore from "../../store/userStore";
 
-const NavLinkItem = (props) => {
+export default function NavLinkItem(props) {
+  const userStore = secStore();
   return (
     <Tooltip title={props.title}>
       <Link
@@ -16,17 +19,15 @@ const NavLinkItem = (props) => {
           max={999}
           invisible={props.title !== "Chats"}
         >
-          {props.icon}
+          {props.url === "/profile" ? userStore.profileIcon : props.icon}
         </Badge>
       </Link>
     </Tooltip>
   );
-};
+}
 
 NavLinkItem.propTypes = {
   url: PropTypes.string,
   title: PropTypes.string,
   icon: PropTypes.object,
 };
-
-export default NavLinkItem;

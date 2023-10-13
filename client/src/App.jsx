@@ -1,4 +1,3 @@
-import Settings from "@mui/icons-material/Settings";
 import Home from "./home/Home";
 import Main from "./main/Main";
 import Chat from "./main/chat/Chat";
@@ -16,7 +15,6 @@ function App() {
       <Route path="home/" element={<Main />}>
         <Route path="chat" element={<Chat />} />
         <Route path="friends" element={<Friends />} />
-        <Route path="settings" element={<Settings />} />
         <Route path="profile" element={<Profile />} />
       </Route>
     </Routes>

@@ -1,7 +1,10 @@
-import React from "react";
+import secStore from "../../store/userStore";
 
-const Profile = () => {
-  return <div>Profile</div>;
-};
-
-export default Profile;
+export default function Profile() {
+  const userStore = secStore();
+  return (
+    <div className="p-5 w-full h-full flex justify-center items-center">
+      Profile
+    </div>
+  );
+}

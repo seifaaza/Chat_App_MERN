@@ -2,7 +2,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import AddIcon from "@mui/icons-material/Add";
+import SendIcon from "@mui/icons-material/Send";
 import PropTypes from "prop-types";
 
 export default function AddFriend(props) {
@@ -35,7 +35,7 @@ export default function AddFriend(props) {
           className="btn w-full"
           size="large"
           variant="contained"
-          endIcon={<AddIcon />}
+          endIcon={<SendIcon />}
         >
           Send request
         </Button>
