@@ -7,7 +7,7 @@ const Banner = () => {
       <div className="banner-title flex items-center">
         <p className="text-sm leading-6 text-mainDark flex gap-5 items-center">
           <strong className="font-semibold text-lg">
-            Stand With Palestine 🇵🇸
+            Stand For Palestine 🇵🇸
           </strong>
 
           <span className="text-sm font-semibold">

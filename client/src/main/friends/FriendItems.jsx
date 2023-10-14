@@ -93,17 +93,15 @@ export default function FriendItems() {
   return (
     <ul role="list" className="w-full divide-y divide-gray-100">
       {people.map((person, index) => (
-        <>
+        <div key={index}>
           <FriendItem
-            key={index}
             imageUrl={person.imageUrl}
             username={usernameCapitalize(person.username)}
             message={person.message}
             lastMessageTime={person.lastMessageTime}
             iconClick={handleClick("bottom-end")}
           />
-          <hr className="line" />
-        </>
+        </div>
       ))}
       <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
         {({ TransitionProps }) => (

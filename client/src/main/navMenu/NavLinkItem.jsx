@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Tooltip from "@mui/material/Tooltip";
 import Badge from "@mui/material/Badge";
-import Avatar from "@mui/material/Avatar";
 import secStore from "../../store/userStore";
 
 export default function NavLinkItem(props) {

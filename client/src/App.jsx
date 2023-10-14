@@ -6,6 +6,7 @@ import "./style/App.css";
 import { Route, Routes } from "react-router-dom";
 import Profile from "./main/profile/Profile";
 import Connection from "./connection/Connection";
+import Error from "./Error";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="friends" element={<Friends />} />
         <Route path="profile" element={<Profile />} />
       </Route>
+      <Route path="*" element={<Error />} />
     </Routes>
   );
 }

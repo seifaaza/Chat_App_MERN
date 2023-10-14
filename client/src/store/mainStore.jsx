@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 const mainStore = create((set) => ({
   loginInterface: true,
-  chatInterface: false,
+  chatInterface: true,
   addFriend: false,
 
   switchLoginInterface: () => {

@@ -1,19 +1,21 @@
 import Friends from "./Friends";
 import AddFriend from "./AddFriend";
 import mainStore from "../../store/mainStore";
-import secStore from "../../store/userStore";
+import userData from "../../store/userStore";
 
-const FriendsModal = () => {
+export default function FriendsModal() {
   const store = mainStore();
-  const userStore = secStore();
+  const userDataStore = userData();
   const emptyFriend = (
-    <div className="h-full flex flex-col justify-center items-center text-white">
-      No friend
+    <div className="flex-grow flex flex-col gap-5 justify-center items-center h-full">
+      <img src="/images/friend.svg" className="w-44" alt="" />
+      <h1 className="text-2xl text-sky-700 ">Your Friends List Is Empty</h1>
     </div>
   );
+
   return (
     <div style={{ height: "75vh" }} className=" overflow-scroll">
-      {userStore.emptyFriend ? (
+      {userDataStore.emptyFriend ? (
         emptyFriend
       ) : store.addFriend ? (
         <AddFriend click={store.switchAddFriend} />
@@ -22,6 +24,4 @@ const FriendsModal = () => {
       )}
     </div>
   );
-};
-
-export default FriendsModal;
+}
