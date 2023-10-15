@@ -28,6 +28,7 @@ export default function Home() {
                           src="/images/img6.jpg"
                           alt=""
                           className="h-full w-full object-cover object-center"
+                          loading="lazy"
                         />
                       </div>
                       <div className="h-72 w-52 overflow-hidden rounded-lg opacity-50 rotate-6">
@@ -35,6 +36,7 @@ export default function Home() {
                           src="/images/img5.jpg"
                           alt=""
                           className="h-full w-full object-cover object-center"
+                          loading="lazy"
                         />
                       </div>
                     </div>
@@ -44,6 +46,7 @@ export default function Home() {
                           src="/images/img4.jpg"
                           alt=""
                           className="h-full w-full object-cover object-center"
+                          loading="lazy"
                         />
                       </div>
                       <div className="h-72 w-52 overflow-hidden rounded-lg opacity-50 rotate-6">
@@ -51,6 +54,7 @@ export default function Home() {
                           src="/images/img3.jpg"
                           alt=""
                           className="h-full w-full object-cover object-center"
+                          loading="lazy"
                         />
                       </div>
                       <div className="h-72 w-52 overflow-hidden rounded-lg opacity-50 rotate-6">
@@ -58,6 +62,7 @@ export default function Home() {
                           src="/images/img2.jpg"
                           alt=""
                           className="h-full w-full object-cover object-center"
+                          loading="lazy"
                         />
                       </div>
                     </div>
@@ -67,6 +72,7 @@ export default function Home() {
                           src="/images/img7.jpg"
                           alt=""
                           className="h-full w-full object-cover object-center"
+                          loading="lazy"
                         />
                       </div>
                       <div className="h-72 w-52 overflow-hidden rounded-lg opacity-50 rotate-6">
@@ -74,6 +80,7 @@ export default function Home() {
                           src="/images/img1.jpg"
                           alt=""
                           className="h-full w-full object-cover object-center"
+                          loading="lazy"
                         />
                       </div>
                     </div>

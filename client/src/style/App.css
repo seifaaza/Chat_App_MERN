@@ -68,7 +68,7 @@ button, .btn{
   color: #ffffff88 !important;
   font-family: var(--main-font) !important;
 }
-.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused,
+.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root,
 .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root,
 .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root,
 .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root,
@@ -76,6 +76,10 @@ button, .btn{
 .css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root{
   color: white !important;
   font-family: var(--main-font) !important;
+}
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline,
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-width: 1px !important;
 }
 .css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
   border: none;
@@ -122,6 +126,12 @@ button, .btn{
   color: var(--sec-color) !important;
   text-transform: capitalize !important;
 }
-.error fieldset{
+ .error fieldset{
   border-color: red !important;
+} 
+ .error .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root{
+  color: red !important;
+} 
+.text-error{
+  color: red !important;
 }

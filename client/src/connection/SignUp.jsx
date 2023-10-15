@@ -9,6 +9,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import SyncLockRoundedIcon from "@mui/icons-material/SyncLockRounded";
 
 import mainStore from "../store/mainStore";
 import authenticationStore from "../store/authenticationStore";
@@ -32,47 +33,93 @@ export default function SignUp() {
       </h1>
       <div className="grid grid-cols-1 gap-x-8 gap-y-6 mt-8">
         <TextField
+          error={!userAuthenticationStore.usernameValidation.state}
           value={userAuthenticationStore.signupForm.username}
           onChange={userAuthenticationStore.updateSignupForm}
           name="username"
           id="outlined-basic"
-          label="Username"
+          label={`${
+            !userAuthenticationStore.usernameValidation.state
+              ? userAuthenticationStore.usernameValidation.message
+              : "Username"
+          }`}
           placeholder="Your Username"
           variant="outlined"
-          className="w-full"
+          className={`w-full ${
+            userAuthenticationStore.signupForm.username != "" &&
+            !userAuthenticationStore.usernameValidation.state
+              ? "error"
+              : ""
+          } `}
           required
+          autoFocus
         />
         <TextField
-          error={userAuthenticationStore.emailError}
+          error={
+            !userAuthenticationStore.emailValidation.state ||
+            userAuthenticationStore.emailError
+          }
           helperText={
             userAuthenticationStore.emailError ? "Email already exists" : ""
           }
           value={userAuthenticationStore.signupForm.email}
           onChange={userAuthenticationStore.updateSignupForm}
           name="email"
-          type="email"
+          type="text"
           id="outlined-basic"
-          label="Email"
+          label={`${
+            userAuthenticationStore.emailError
+              ? userAuthenticationStore.emailValidation.message
+              : "Email"
+          }`}
           placeholder="Your Email"
           variant="outlined"
           className={`w-full ${
-            userAuthenticationStore.emailError ? "error" : ""
-          }`}
+            !userAuthenticationStore.emailValidation.state ||
+            userAuthenticationStore.emailError
+              ? "error"
+              : ""
+          } `}
           required
         />
         <FormControl variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">
-            Password
+          <InputLabel
+            htmlFor="outlined-adornment-password"
+            error={!userAuthenticationStore.passwordValidation.state}
+            required
+          >
+            <span
+              className={`${
+                userAuthenticationStore.signupForm.password != "" &&
+                !userAuthenticationStore.passwordValidation.state
+                  ? "text-error"
+                  : ""
+              }`}
+            >
+              {!userAuthenticationStore.passwordValidation.state
+                ? userAuthenticationStore.passwordValidation.message
+                : "Password"}
+            </span>
           </InputLabel>
           <OutlinedInput
             value={userAuthenticationStore.signupForm.password}
             onChange={userAuthenticationStore.updateSignupForm}
             name="password"
             id="outlined-adornment-password"
-            label="Password"
+            label={`${
+              !userAuthenticationStore.passwordValidation.state
+                ? userAuthenticationStore.passwordValidation.message
+                : "Password"
+            }`}
             placeholder="Your Password"
             type={store.showPassword ? "text" : "password"}
-            required
+            className={`w-full ${
+              userAuthenticationStore.signupForm.password != "" &&
+              !userAuthenticationStore.passwordValidation.state
+                ? "error"
+                : ""
+            } relative `}
+            style={{ paddingRight: "65px" }}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
@@ -84,7 +131,17 @@ export default function SignUp() {
                 </IconButton>
               </InputAdornment>
             }
+            required
           />
+
+          <div
+            style={{ borderRadius: "0 4px 4px 0" }}
+            className="h-full w-12 bg-sec absolute right-0 flex justify-center items-center
+            hover:opacity-80 cursor-pointer transition"
+            onClick={userAuthenticationStore.generatePassword}
+          >
+            <SyncLockRoundedIcon />
+          </div>
         </FormControl>
       </div>
 
