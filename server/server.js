@@ -1,11 +1,17 @@
+// Create express app
 const express = require('express')
 const app = express()
 
-// Import file of database connection config
+// Database connection
 const DbConnect = require('./config/DbConnect')
+DbConnect()
 
-// Import authentication routes
-const authRoutes = require('./routes/authRoutes')
+// Enable cross origin 
+const cors = require("cors");
+app.use(cors({
+    origin: true,
+    credentials: true
+  }));
 
 // Load the environment variables
 require('dotenv').config()
@@ -14,9 +20,9 @@ require('dotenv').config()
 app.use(express.static('public'))
 app.use(express.json())
 
-// Database connection
-DbConnect()
-
+// Routing
+const authRoutes = require('./routes/authRoutes')
 app.use(authRoutes)
 
+// Run App
 app.listen(process.env.PORT , _ => console.log(`App is running on port ${process.env.PORT}`))

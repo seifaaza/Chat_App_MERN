@@ -122,3 +122,6 @@ button, .btn{
   color: var(--sec-color) !important;
   text-transform: capitalize !important;
 }
+.error fieldset{
+  border-color: red !important;
+}
