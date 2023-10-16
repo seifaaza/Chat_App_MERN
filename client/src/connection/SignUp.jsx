@@ -10,6 +10,7 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import SyncLockRoundedIcon from "@mui/icons-material/SyncLockRounded";
+import Tooltip from "@mui/material/Tooltip";
 import ReCAPTCHA from "react-google-recaptcha";
 import mainStore from "../store/mainStore";
 import authenticationStore from "../store/authenticationStore";
@@ -136,15 +137,16 @@ export default function SignUp() {
             }
             required
           />
-
-          <div
-            style={{ borderRadius: "0 4px 4px 0" }}
-            className="h-full w-12 bg-sec absolute right-0 flex justify-center items-center
+          <Tooltip title="Generate Password">
+            <div
+              style={{ borderRadius: "0 4px 4px 0" }}
+              className="h-full w-12 bg-sec absolute right-0 flex justify-center items-center
             hover:opacity-80 cursor-pointer transition"
-            onClick={userAuthenticationStore.generatePassword}
-          >
-            <SyncLockRoundedIcon />
-          </div>
+              onClick={userAuthenticationStore.generatePassword}
+            >
+              <SyncLockRoundedIcon />
+            </div>
+          </Tooltip>
         </FormControl>
         <ReCAPTCHA
           sitekey="your client site key"
