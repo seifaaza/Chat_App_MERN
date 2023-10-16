@@ -9,7 +9,6 @@ import axios from "axios";
 disableReactDevTools();
 
 axios.defaults.baseURL = import.meta.env.localServerUrl;
-
 axios.defaults.withCredentials = true;
 
 ReactDOM.createRoot(document.getElementById("root")).render(
