@@ -9,7 +9,7 @@ const authenticationStore = create((set) => ({
   },
 
   // Form validation
-  validationError: true,
+  FormValidation: false,
   usernameValidation: {
     state: true,
     message: "",
@@ -35,14 +35,12 @@ const authenticationStore = create((set) => ({
                 state: true,
                 message: "",
               },
-              validationError: false,
             })
           : set({
               usernameValidation: {
                 state: false,
                 message: "Your username must contain at least 6 characters.",
               },
-              validationError: true,
             });
         break;
       case "email":
@@ -52,14 +50,12 @@ const authenticationStore = create((set) => ({
                 state: true,
                 message: "",
               },
-              validationError: false,
             })
           : set({
               emailValidation: {
                 state: false,
                 message: "Your email is invalid.",
               },
-              validationError: true,
             });
         break;
       case "password":
@@ -69,17 +65,30 @@ const authenticationStore = create((set) => ({
                 state: true,
                 message: "",
               },
-              validationError: false,
             })
           : set({
               passwordValidation: {
                 state: false,
                 message: "your password is not strong enough",
               },
-              validationError: true,
             });
         break;
     }
+    const {
+      usernameValidation: { state: usernameState },
+      emailValidation: { state: emailState },
+      passwordValidation: { state: passwordState },
+      signupForm: { username, email, password },
+    } = authenticationStore.getState();
+    set({
+      FormValidation:
+        usernameState &&
+        emailState &&
+        passwordState &&
+        username != "" &&
+        email != "" &&
+        password != "",
+    });
   },
 
   storeSignUpForm: (name, value) => {

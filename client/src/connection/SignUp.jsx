@@ -158,10 +158,10 @@ export default function SignUp() {
           Login
         </Button>
         <Button
-          disabled={userAuthenticationStore.validationError}
+          disabled={!userAuthenticationStore.FormValidation}
           type="submit"
           className={`btn w-full ${
-            userAuthenticationStore.validationError ? "opacity-50" : ""
+            !userAuthenticationStore.FormValidation ? "opacity-50" : ""
           }`}
           size="large"
           variant="contained"
