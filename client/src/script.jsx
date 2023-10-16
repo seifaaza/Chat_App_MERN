@@ -8,8 +8,8 @@ import axios from "axios";
 
 disableReactDevTools();
 
-// axios.defaults.baseURL = "http://localhost:3000";
-axios.defaults.baseURL = "https://chatflow-api.onrender.com";
+axios.defaults.baseURL = "http://localhost:8080";
+// axios.defaults.baseURL = "https://chatflow-pdnb.onrender.com";
 axios.defaults.withCredentials = true;
 
 ReactDOM.createRoot(document.getElementById("root")).render(

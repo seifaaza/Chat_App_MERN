@@ -3,17 +3,17 @@ const express = require('express')
 const app = express()
 
 // Database connection
-const DbConnect = require('./config/DbConnect')
-DbConnect()
+const dbConnect = require('./config/dbConnection')
+dbConnect()
 
 // Deployment Url
-deploymentUrl = "https://chat-flow-seven.vercel.app"
+deploymentUrl = "https://chatflow-pdnb.onrender.com"
 
 // Enable cross origin 
 const cors = require("cors");
 app.use(cors({
-    origin: [deploymentUrl],
-    // origin: true,
+    // origin: [deploymentUrl],
+    origin: true,
     credentials: true
   }));
 
