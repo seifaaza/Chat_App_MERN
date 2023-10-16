@@ -7,7 +7,7 @@ const DbConnect = require('./config/DbConnect')
 DbConnect()
 
 // Deployment Url
-deploymentUrl = "https://chat-flow.vercel.app"
+deploymentUrl = "https://chat-flow-seven.vercel.app"
 
 // Enable cross origin 
 const cors = require("cors");
