@@ -10,7 +10,7 @@ import FormControl from "@mui/material/FormControl";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import SyncLockRoundedIcon from "@mui/icons-material/SyncLockRounded";
-
+import ReCAPTCHA from "react-google-recaptcha";
 import mainStore from "../store/mainStore";
 import authenticationStore from "../store/authenticationStore";
 
@@ -77,7 +77,8 @@ export default function SignUp() {
           placeholder="Your Email"
           variant="outlined"
           className={`w-full ${
-            !userAuthenticationStore.emailValidation.state ||
+            (userAuthenticationStore.signupForm.email != "" &&
+              !userAuthenticationStore.emailValidation.state) ||
             userAuthenticationStore.emailError
               ? "error"
               : ""
@@ -145,6 +146,10 @@ export default function SignUp() {
             <SyncLockRoundedIcon />
           </div>
         </FormControl>
+        <ReCAPTCHA
+          sitekey="your client site key"
+          onChange={() => console.log("ll")}
+        />
       </div>
 
       <div className="mt-8 flex justify-center gap-5">
