@@ -115,8 +115,8 @@ const authenticationStore = create((set) => ({
 
   generatePassword: async () => {
     const passwordGeneratorUrl = "https://www.dinopass.com/password/strong";
-    const res = await axios.get(passwordGeneratorUrl);
-    const generatedPassword = res.data;
+    const res = await fetch(passwordGeneratorUrl);
+    const generatedPassword = await res.text();
     const {
       signupForm: { username, email },
       storeSignUpForm,
@@ -136,7 +136,7 @@ const authenticationStore = create((set) => ({
   signup: async () => {
     try {
       const { signupForm } = authenticationStore.getState();
-      const res = await axios.post("http://localhost:8080/signup", signupForm, {
+      const res = await axios.post("/signup", signupForm, {
         withCredentials: true,
       });
       console.log(res);

@@ -148,10 +148,10 @@ export default function SignUp() {
             </div>
           </Tooltip>
         </FormControl>
-        <ReCAPTCHA
+        {/* <ReCAPTCHA
           sitekey="your client site key"
           onChange={() => console.log("ll")}
-        />
+        /> */}
       </div>
 
       <div className="mt-8 flex justify-center gap-5">
