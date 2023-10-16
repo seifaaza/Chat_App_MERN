@@ -13,8 +13,8 @@ deploymentClientUrl = "https://chatflow-pdnb.onrender.com"
 // Enable cross origin 
 const cors = require("cors");
 app.use(cors({
-    origin: localClientUrl,
-    origin: deploymentClientUrl,
+    // origin: process.env.deploymentClientUrl,
+    origin: process.env.deploymentClientUrl,
     credentials: true
   }));
 
