@@ -20,6 +20,8 @@ app.use(cors({
 // Load the environment variables
 require('dotenv').config()
 
+app.get('/', (req, res) => res.json('hello'))
+
 // Middlewares
 app.use(express.static('public'))
 app.use(express.json())
