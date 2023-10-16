@@ -7,13 +7,14 @@ const dbConnect = require('./config/dbConnection')
 dbConnect()
 
 // Deployment Url
-deploymentUrl = "https://chatflow-pdnb.onrender.com"
+localClientUrl = "http://localhost:5173"
+deploymentClientUrl = "https://chatflow-pdnb.onrender.com"
 
 // Enable cross origin 
 const cors = require("cors");
 app.use(cors({
-    // origin: [deploymentUrl],
-    origin: true,
+    origin: localClientUrl,
+    origin: deploymentClientUrl,
     credentials: true
   }));
 
