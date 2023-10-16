@@ -39,7 +39,7 @@ export default function Connection() {
                       </div>
                     </div>
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                      <div className="h-72 w-52 overflow-hidden rounded-lg opacity-50 rotate-6">
+                      <div className="h-72 w-52 overflow-hidden rounded-lg opacity-0 sm:opacity-50 rotate-6">
                         <img
                           src="/images/img4.jpg"
                           alt=""

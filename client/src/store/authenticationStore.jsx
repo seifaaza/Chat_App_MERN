@@ -26,8 +26,7 @@ const authenticationStore = create((set) => ({
   validation: (name, value) => {
     const usernameRegex = /^(?=.*[a-zA-Z])(?=.*\d).{6,}$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const passwordRegex =
-      /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/;
+    const passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
     switch (name) {
       case "username":
         usernameRegex.test(value)
@@ -36,12 +35,14 @@ const authenticationStore = create((set) => ({
                 state: true,
                 message: "",
               },
+              validationError: false,
             })
           : set({
               usernameValidation: {
                 state: false,
                 message: "Your username must contain at least 6 characters.",
               },
+              validationError: true,
             });
         break;
       case "email":
@@ -51,12 +52,14 @@ const authenticationStore = create((set) => ({
                 state: true,
                 message: "",
               },
+              validationError: false,
             })
           : set({
               emailValidation: {
                 state: false,
                 message: "Your email is invalid.",
               },
+              validationError: true,
             });
         break;
       case "password":
@@ -66,21 +69,27 @@ const authenticationStore = create((set) => ({
                 state: true,
                 message: "",
               },
+              validationError: false,
             })
           : set({
               passwordValidation: {
                 state: false,
                 message: "your password is not strong enough",
               },
+              validationError: true,
             });
         break;
     }
   },
 
-  updateSignupForm: (e) => {
-    const { validation } = authenticationStore.getState();
-    const { name, value } = e.target;
+  storeSignUpForm: (name, value) => {
     sessionStorage.setItem(name, value);
+  },
+  emailError: false,
+  updateSignupForm: (e) => {
+    const { validation, storeSignUpForm } = authenticationStore.getState();
+    const { name, value } = e.target;
+    storeSignUpForm(name, value);
     set((state) => {
       return {
         signupForm: {
@@ -89,16 +98,20 @@ const authenticationStore = create((set) => ({
         },
       };
     });
+    set({
+      emailError: false,
+    });
     validation(name, value);
   },
 
   generatePassword: async () => {
-    const passwordGeneratorUrl =
-      "https://www.psswrd.net/api/v1/password/?length=10&lower=1&upper=1&int=1";
+    const passwordGeneratorUrl = "https://www.dinopass.com/password/strong";
     const res = await axios.get(passwordGeneratorUrl);
-    const generatedPassword = res.data.password;
+    const generatedPassword = res.data;
     const {
       signupForm: { username, email },
+      storeSignUpForm,
+      validation,
     } = authenticationStore.getState();
     set({
       signupForm: {
@@ -107,9 +120,10 @@ const authenticationStore = create((set) => ({
         password: generatedPassword,
       },
     });
+    validation("password", generatedPassword);
+    storeSignUpForm("password", generatedPassword);
   },
 
-  emailError: false,
   signup: async () => {
     try {
       const { signupForm } = authenticationStore.getState();

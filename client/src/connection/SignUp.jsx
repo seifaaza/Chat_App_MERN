@@ -60,7 +60,9 @@ export default function SignUp() {
             userAuthenticationStore.emailError
           }
           helperText={
-            userAuthenticationStore.emailError ? "Email already exists" : ""
+            userAuthenticationStore.emailError
+              ? "This Email is already exists"
+              : ""
           }
           value={userAuthenticationStore.signupForm.email}
           onChange={userAuthenticationStore.updateSignupForm}
@@ -156,8 +158,11 @@ export default function SignUp() {
           Login
         </Button>
         <Button
+          disabled={userAuthenticationStore.validationError}
           type="submit"
-          className="btn w-full"
+          className={`btn w-full ${
+            userAuthenticationStore.validationError ? "opacity-50" : ""
+          }`}
           size="large"
           variant="contained"
           endIcon={<PersonAddAlt1RoundedIcon />}
