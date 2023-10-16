@@ -9,14 +9,15 @@ dbConnect()
 // Enable cross origin 
 const cors = require("cors");
 app.use(cors({
-    origin: process.env.deploymentClientUrl,
+    // origin: process.env.deploymentClientUrl,
+    origin: process.env.localClientUrl,
     credentials: true
   }));
 
+
+
 // Load the environment variables
 require('dotenv').config()
-
-app.get('/', (req, res) => res.json('hello'))
 
 // Middlewares
 app.use(express.static('public'))
