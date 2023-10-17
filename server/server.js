@@ -7,13 +7,14 @@ const dbConnect = require('./config/dbConnection')
 dbConnect()
 
 // Enable cross origin 
+const cors = require("cors");
+app.use(cors({
+    // origin: process.env.deploymentClientUrl,
+    // origin: process.env.localClientUrl,
+    origin: "http://localhost:5173",
+    credentials: true
+  }));
 
-
-  app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-    // Add other CORS headers as needed
-    next();
-  });
 
 // Load the environment variables
 require('dotenv').config()
