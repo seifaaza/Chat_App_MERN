@@ -11,7 +11,7 @@ const cors = require("cors");
 app.use(cors({
     // origin: process.env.deploymentClientUrl,
     // origin: process.env.localClientUrl,
-    origin: "http://localhost:5173",
+    origin: "https://chatflow-pdnb.onrender.com",
     credentials: true
   }));
 
