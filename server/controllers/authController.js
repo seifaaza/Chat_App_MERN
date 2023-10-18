@@ -44,13 +44,14 @@ const login = async (req, res) => {
                     // secure : process.env.NODE_ENV === 'production',
                     secure : true,
                 })
-                res.sendStatus(200)
+                res.status(200).json(loggedUserId)
             } else {
                 res.sendStatus(401)
             }
         } 
     } catch(error){
-      res.sendStatus(400)
+        console.log(error);
+        res.sendStatus(400)
     }
 }
 

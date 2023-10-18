@@ -10,12 +10,11 @@ export default function Connection() {
     <div className="relative overflow-hidden bg-main w-full h-screen">
       <Banner />
       <Navbar />
-      <div className="pb-80 pt-16 sm:pb-40 sm:pt-20 lg:pb-48 lg:pt-20">
+      <div className="pb-80 pt-16">
         <div className="z-10 relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           {store.loginInterface ? <Login /> : <SignUp />}
           <div>
             <div className="mt-10">
-              {/* Decorative image grid */}
               <div
                 aria-hidden="true"
                 className="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"

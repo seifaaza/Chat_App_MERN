@@ -2,14 +2,18 @@ import { create } from "zustand";
 import axios from "axios";
 
 const authenticationStore = create((set) => ({
+  // ***************************** Sign Up ************************************
   signupForm: {
-    username: sessionStorage.username ? sessionStorage.username : "",
-    email: sessionStorage.email ? sessionStorage.email : "",
-    password: sessionStorage.password ? sessionStorage.password : "",
+    signupUsername: sessionStorage.signupUsername
+      ? sessionStorage.signupUsername
+      : "",
+    signupEmail: sessionStorage.signupEmail ? sessionStorage.signupEmail : "",
+    signupPassword: sessionStorage.signupPassword
+      ? sessionStorage.signupPassword
+      : "",
   },
-
   // Form validation
-  FormValidation: false,
+  signupFormValidation: false,
   usernameValidation: {
     state: true,
     message: "",
@@ -22,13 +26,14 @@ const authenticationStore = create((set) => ({
     state: true,
     message: "",
   },
+  emailError: false,
 
   validation: (name, value) => {
     const usernameRegex = /^(?=.*[a-zA-Z])(?=.*\d).{6,}$/;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,16}$/;
     switch (name) {
-      case "username":
+      case "signupUsername":
         usernameRegex.test(value)
           ? set({
               usernameValidation: {
@@ -43,7 +48,7 @@ const authenticationStore = create((set) => ({
               },
             });
         break;
-      case "email":
+      case "signupEmail":
         emailRegex.test(value)
           ? set({
               emailValidation: {
@@ -58,7 +63,7 @@ const authenticationStore = create((set) => ({
               },
             });
         break;
-      case "password":
+      case "signupPassword":
         passwordRegex.test(value)
           ? set({
               passwordValidation: {
@@ -74,29 +79,35 @@ const authenticationStore = create((set) => ({
             });
         break;
     }
-    const {
-      usernameValidation: { state: usernameState },
-      emailValidation: { state: emailState },
-      passwordValidation: { state: passwordState },
-      signupForm: { username, email, password },
-    } = authenticationStore.getState();
-    set({
-      FormValidation:
-        usernameState &&
-        emailState &&
-        passwordState &&
-        username != "" &&
-        email != "" &&
-        password != "",
-    });
   },
 
   storeSignUpForm: (name, value) => {
     sessionStorage.setItem(name, value);
   },
-  emailError: false,
+
+  checkSignupFormErrors: () => {
+    const {
+      usernameValidation: { state: usernameState },
+      emailValidation: { state: emailState },
+      passwordValidation: { state: passwordState },
+      signupForm: { signupUsername, signupEmail, signupPassword },
+      // captchaValidation,
+    } = authenticationStore.getState();
+    set({
+      signupFormValidation:
+        usernameState &&
+        emailState &&
+        passwordState &&
+        signupUsername != "" &&
+        signupEmail != "" &&
+        signupPassword != "",
+      // && captchaValidation,
+    });
+  },
+
   updateSignupForm: (e) => {
-    const { validation, storeSignUpForm } = authenticationStore.getState();
+    const { storeSignUpForm, validation, checkSignupFormErrors } =
+      authenticationStore.getState();
     const { name, value } = e.target;
     storeSignUpForm(name, value);
     set((state) => {
@@ -111,6 +122,7 @@ const authenticationStore = create((set) => ({
       emailError: false,
     });
     validation(name, value);
+    checkSignupFormErrors();
   },
 
   generatePassword: async () => {
@@ -118,33 +130,42 @@ const authenticationStore = create((set) => ({
     const res = await fetch(passwordGeneratorUrl);
     const generatedPassword = await res.text();
     const {
-      signupForm: { username, email },
+      signupForm: { signupUsername, signupEmail },
       storeSignUpForm,
       validation,
+      checkSignupFormErrors,
     } = authenticationStore.getState();
     set({
       signupForm: {
-        username,
-        email,
-        password: generatedPassword,
+        signupUsername,
+        signupEmail,
+        signupPassword: generatedPassword,
       },
     });
-    validation("password", generatedPassword);
-    storeSignUpForm("password", generatedPassword);
+    validation("signupPassword", generatedPassword);
+    storeSignUpForm("signupPassword", generatedPassword);
+    checkSignupFormErrors();
   },
 
   signup: async () => {
     try {
-      const { signupForm } = authenticationStore.getState();
-      const res = await axios.post("/signup", signupForm, {
+      const {
+        signupForm: { signupUsername, signupEmail, signupPassword },
+      } = authenticationStore.getState();
+      const signupData = {
+        username: signupUsername,
+        email: signupEmail,
+        password: signupPassword,
+      };
+      const res = await axios.post("/signup", signupData, {
         withCredentials: true,
       });
       console.log(res);
       set({
         signupForm: {
-          username: "",
-          email: "",
-          password: "",
+          signupUsername: "",
+          signupEmail: "",
+          signupPassword: "",
         },
         emailError: false,
       });
@@ -155,9 +176,86 @@ const authenticationStore = create((set) => ({
         ? set({ emailError: true })
         : set({ emailError: false });
     }
-    sessionStorage.removeItem("username");
-    sessionStorage.removeItem("email");
-    sessionStorage.removeItem("password");
+    sessionStorage.removeItem("signupUsername");
+    sessionStorage.removeItem("signupEmail");
+    sessionStorage.removeItem("signupPassword");
+  },
+
+  // ******************************* Login ************************************
+  loginForm: {
+    loginEmail: sessionStorage.loginEmail ? sessionStorage.loginEmail : "",
+    loginPassword: sessionStorage.loginPassword
+      ? sessionStorage.loginPassword
+      : "",
+  },
+  // Form validation
+  loginFormValidation: false,
+  loginError: false,
+
+  storeLoginForm: (name, value) => {
+    sessionStorage.setItem(name, value);
+  },
+
+  checkLoginFormErrors: () => {
+    const {
+      loginForm: { loginEmail, loginPassword },
+      // captchaValidation,
+    } = authenticationStore.getState();
+    set({
+      loginFormValidation: loginEmail != "" && loginPassword != "",
+      // && captchaValidation,
+    });
+  },
+
+  updateLoginForm: (e) => {
+    const { storeLoginForm, checkLoginFormErrors } =
+      authenticationStore.getState();
+    const { name, value } = e.target;
+    storeLoginForm(name, value);
+    set((state) => {
+      return {
+        loginForm: {
+          ...state.loginForm,
+          [name]: value,
+        },
+      };
+    });
+    set({
+      loginError: false,
+    });
+    checkLoginFormErrors();
+  },
+
+  login: async () => {
+    try {
+      const {
+        loginForm: { loginEmail, loginPassword },
+      } = authenticationStore.getState();
+      const loginData = {
+        email: loginEmail,
+        password: loginPassword,
+      };
+      console.log(loginData);
+      const res = await axios.post("/login", loginData, {
+        withCredentials: true,
+      });
+      console.log(res);
+      set({
+        loginForm: {
+          loginEmail: "",
+          loginPassword: "",
+        },
+        loginError: false,
+      });
+    } catch (error) {
+      error.response &&
+      error.response.status >= 400 &&
+      error.response.status < 500
+        ? set({ loginError: true })
+        : set({ loginError: false });
+    }
+    sessionStorage.removeItem("loginEmail");
+    sessionStorage.removeItem("loginPassword");
   },
 }));
 

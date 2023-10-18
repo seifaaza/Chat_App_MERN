@@ -35,9 +35,9 @@ export default function SignUp() {
       <div className="grid grid-cols-1 gap-x-8 gap-y-6 mt-8">
         <TextField
           error={!userAuthenticationStore.usernameValidation.state}
-          value={userAuthenticationStore.signupForm.username}
+          value={userAuthenticationStore.signupForm.signupUsername}
           onChange={userAuthenticationStore.updateSignupForm}
-          name="username"
+          name="signupUsername"
           id="outlined-basic"
           label={`${
             !userAuthenticationStore.usernameValidation.state
@@ -47,7 +47,7 @@ export default function SignUp() {
           placeholder="Your Username"
           variant="outlined"
           className={`w-full ${
-            userAuthenticationStore.signupForm.username != "" &&
+            userAuthenticationStore.signupForm.signupUsername != "" &&
             !userAuthenticationStore.usernameValidation.state
               ? "error"
               : ""
@@ -65,9 +65,9 @@ export default function SignUp() {
               ? "This Email is already exists"
               : ""
           }
-          value={userAuthenticationStore.signupForm.email}
+          value={userAuthenticationStore.signupForm.signupEmail}
           onChange={userAuthenticationStore.updateSignupForm}
-          name="email"
+          name="signupEmail"
           type="text"
           id="outlined-basic"
           label={`${
@@ -78,7 +78,7 @@ export default function SignUp() {
           placeholder="Your Email"
           variant="outlined"
           className={`w-full ${
-            (userAuthenticationStore.signupForm.email != "" &&
+            (userAuthenticationStore.signupForm.signupEmail != "" &&
               !userAuthenticationStore.emailValidation.state) ||
             userAuthenticationStore.emailError
               ? "error"
@@ -94,7 +94,7 @@ export default function SignUp() {
           >
             <span
               className={`${
-                userAuthenticationStore.signupForm.password != "" &&
+                userAuthenticationStore.signupForm.signupPassword != "" &&
                 !userAuthenticationStore.passwordValidation.state
                   ? "text-error"
                   : ""
@@ -106,9 +106,9 @@ export default function SignUp() {
             </span>
           </InputLabel>
           <OutlinedInput
-            value={userAuthenticationStore.signupForm.password}
+            value={userAuthenticationStore.signupForm.signupPassword}
             onChange={userAuthenticationStore.updateSignupForm}
-            name="password"
+            name="signupPassword"
             id="outlined-adornment-password"
             label={`${
               !userAuthenticationStore.passwordValidation.state
@@ -118,7 +118,7 @@ export default function SignUp() {
             placeholder="Your Password"
             type={store.showPassword ? "text" : "password"}
             className={`w-full ${
-              userAuthenticationStore.signupForm.password != "" &&
+              userAuthenticationStore.signupForm.signupPassword != "" &&
               !userAuthenticationStore.passwordValidation.state
                 ? "error"
                 : ""
@@ -148,10 +148,12 @@ export default function SignUp() {
             </div>
           </Tooltip>
         </FormControl>
-        {/* <ReCAPTCHA
-          sitekey="your client site key"
-          onChange={() => console.log("ll")}
-        /> */}
+        <ReCAPTCHA
+          style={{ width: "100%" }}
+          className="w-full bg-white rounded-lg"
+          sitekey={import.meta.env.VITE_SOME_KEY}
+          // onChange={userAuthenticationStore.captchaChange}
+        />
       </div>
 
       <div className="mt-8 flex justify-center gap-5">
@@ -165,10 +167,10 @@ export default function SignUp() {
           Login
         </Button>
         <Button
-          disabled={!userAuthenticationStore.FormValidation}
+          disabled={!userAuthenticationStore.signupFormValidation}
           type="submit"
           className={`btn w-full ${
-            !userAuthenticationStore.FormValidation ? "opacity-50" : ""
+            !userAuthenticationStore.signupFormValidation ? "opacity-50" : ""
           }`}
           size="large"
           variant="contained"

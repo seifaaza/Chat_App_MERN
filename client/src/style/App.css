@@ -135,3 +135,5 @@ button, .btn{
 .text-error{
   color: red !important;
 }
+
+#recaptcha_table { border-color: #FF0000 !important;  }
