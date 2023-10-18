@@ -11,13 +11,23 @@ const cors = require("cors");
 app.use(cors({
     // origin: process.env.deploymentClientUrl,
     // origin: process.env.localClientUrl,
-    origin: "https://chatflow-pdnb.onrender.com",
+    // origin: "https://chatflow-pdnb.onrender.com",
+    origin: "http://localhost:5173",
     credentials: true
   }));
 
 
 // Load the environment variables
 require('dotenv').config()
+
+// Enable read cookies
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+
+// Enable Parsing Request Data
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Middlewares
 app.use(express.static('public'))
