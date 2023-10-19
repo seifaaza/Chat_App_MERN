@@ -2,6 +2,26 @@ import { create } from "zustand";
 import axios from "axios";
 
 const authenticationStore = create((set) => ({
+  userId: null,
+  //  user: null,
+  //  userId: null
+
+  // ***************************** Check auth ************************************
+  loggedIn: null,
+  checkAuth: async () => {
+    try {
+      const res = await axios("/check-auth", { withCredentials: true });
+      set({
+        loggedIn: true,
+        //  user: res.data.user,
+        //  userId: res.data.user._id
+      });
+      console.log(res);
+    } catch (err) {
+      set({ loggedIn: false });
+    }
+  },
+
   // ***************************** Sign Up ************************************
   signupForm: {
     signupUsername: sessionStorage.signupUsername
@@ -167,6 +187,7 @@ const authenticationStore = create((set) => ({
           signupEmail: "",
           signupPassword: "",
         },
+        loggedIn: true,
         emailError: false,
       });
     } catch (error) {
@@ -235,7 +256,6 @@ const authenticationStore = create((set) => ({
         email: loginEmail,
         password: loginPassword,
       };
-      console.log(loginData);
       const res = await axios.post("/login", loginData, {
         withCredentials: true,
       });
@@ -245,6 +265,7 @@ const authenticationStore = create((set) => ({
           loginEmail: "",
           loginPassword: "",
         },
+        loggedIn: true,
         loginError: false,
       });
     } catch (error) {
@@ -256,6 +277,13 @@ const authenticationStore = create((set) => ({
     }
     sessionStorage.removeItem("loginEmail");
     sessionStorage.removeItem("loginPassword");
+  },
+
+  // ******************************* Logout ************************************
+  logout: async () => {
+    await axios.get("/logout", { withCredentials: true });
+    window.location.replace("/connection");
+    set({ loggedIn: false });
   },
 }));
 

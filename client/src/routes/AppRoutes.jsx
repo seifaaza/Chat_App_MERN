@@ -7,6 +7,7 @@ import Error from "../Error";
 const AppRoutes = () => {
   return (
     <Routes>
+      <Route path="/" element={<Chat />} />
       <Route path="/chat" element={<Chat />} />
       <Route path="/friends" element={<Friends />} />
       <Route path="/profile" element={<Profile />} />
