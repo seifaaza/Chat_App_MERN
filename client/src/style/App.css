@@ -64,6 +64,19 @@ button, .btn{
   color: var(--main-color) !important;
 }
 
+.btn-red{
+  background-color: red !important;
+  color: white !important;
+  font-family: var(--sec-font) !important;
+  font-weight: 400 !important;
+  transition: 200ms !important;
+  box-shadow: none !important;
+  text-transform: capitalize !important;
+}
+.btn-red:hover{
+  transform: translateY(-3px) !important;
+  opacity: 85% !important;
+}
 .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
   color: #ffffff88 !important;
   font-family: var(--main-font) !important;
@@ -135,5 +148,27 @@ button, .btn{
 .text-error{
   color: red !important;
 }
+.profile-button-item{
+  color: white !important;
+}
+.profile-button-item:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+  color: #60f8ee !important;
+}
+.profile-image{
+  width: 11rem !important;
+  height: 11rem !important;
+  position: relative;
+  overflow: hidden;
+}
 
-#recaptcha_table { border-color: #FF0000 !important;  }
+.edit-image-icon {
+  height: 100% !important;
+  width: 100% !important;
+  padding: 50px;
+  top: 0%;
+  left: 0%;
+  background-color: #001c3099;
+  opacity: .8;
+  cursor: pointer;
+}

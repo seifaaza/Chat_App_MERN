@@ -281,9 +281,12 @@ const authenticationStore = create((set) => ({
 
   // ******************************* Logout ************************************
   logout: async () => {
-    await axios.get("/logout", { withCredentials: true });
-    window.location.replace("/connection");
-    set({ loggedIn: false });
+    try {
+      await axios.get("/logout", { withCredentials: true });
+      set({ loggedIn: false });
+    } catch (error) {
+      console.log(error);
+    }
   },
 }));
 

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import Avatar from "@mui/material/Avatar";
 
-const userData = create((set) => ({
+const userStore = create((set) => ({
   username: "Seif",
   image: "https://picsum.photos/200/300",
   profileIcon: <Avatar alt="username" image="image" />,
@@ -9,6 +9,14 @@ const userData = create((set) => ({
   emptyChat: true,
   emptyFriend: true,
   emptyNotification: true,
+
+  EditProfileModal: false,
+  openEditModal: () => {
+    set({ EditProfileModal: true });
+  },
+  closeEditModal: () => {
+    set({ EditProfileModal: false });
+  },
 }));
 
-export default userData;
+export default userStore;

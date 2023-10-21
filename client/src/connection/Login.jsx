@@ -12,6 +12,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 import mainStore from "../store/mainStore";
 import authenticationStore from "../store/authenticationStore";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const store = mainStore();
@@ -24,9 +25,12 @@ export default function Login() {
   };
   const userAuthenticationStore = authenticationStore();
 
+  const navigate = useNavigate();
+
   const handleLogin = async (e) => {
     e.preventDefault();
     await userAuthenticationStore.login();
+    navigate("/home/chat");
   };
 
   return (

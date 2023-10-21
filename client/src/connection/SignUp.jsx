@@ -14,14 +14,17 @@ import Tooltip from "@mui/material/Tooltip";
 import ReCAPTCHA from "react-google-recaptcha";
 import mainStore from "../store/mainStore";
 import authenticationStore from "../store/authenticationStore";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const store = mainStore();
   const userAuthenticationStore = authenticationStore();
 
+  const navigate = useNavigate();
   const handleSignUp = async (e) => {
     e.preventDefault();
     await userAuthenticationStore.signup();
+    navigate("/home/chat");
   };
 
   return (
